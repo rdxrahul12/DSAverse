@@ -1,0 +1,295 @@
+/*
+  Root CSS variables for Netflix-inspired color palette.
+  These variables make it easy to update the color scheme globally.
+*/
+:root {
+  --netflix-black: #141414;    /* Deep black background for main UI */
+  --netflix-red: #e50914;      /* Netflix signature red for highlights */
+  --netflix-white: #ffffff;    /* Crisp white for text and accents */
+}
+
+/*
+  Set up base styles for the body to create a dark, modern look.
+  Uses flex layout to ensure the footer stays at the bottom.
+*/
+body {
+  background: var(--netflix-black);   /* Main background color */
+  color: var(--netflix-white);        /* Default text color */
+  font-family: 'Montserrat', Arial, sans-serif; /* Modern, bold font */
+  margin: 0;                         /* Remove default margin */
+  min-height: 100vh;                 /* Ensure the body fills the viewport */
+  display: flex;                     /* Flex column for sticky footer */
+  flex-direction: column;            /* Stack children vertically */
+}
+
+/*
+  Header styles for sticky top navigation bar.
+  Includes shadow for depth and high z-index for layering.
+*/
+header {
+  background: var(--netflix-black);   /* Match Netflix black */
+  padding: 1.5rem 0 1rem 0;           /* Top, right/left, bottom padding */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.7); /* Soft shadow for depth */
+  position: sticky;                   /* Sticks header to top on scroll */
+  top: 0;                             /* Stick to top */
+  z-index: 100;                       /* Ensure header stays above other elements */
+}
+
+/*
+  Remove underline from site title link for a clean logo look.
+*/
+header a {
+  text-decoration: none;              /* Remove underline from anchor */
+}
+
+/*
+  Container for header content.
+  Uses flex layout to space out site title and toggle buttons.
+  Gap ensures spacing between elements.
+*/
+.container_header-container {
+  display: flex;                      /* Arrange children in a row */
+  justify-content: center;            /* Center content horizontally */
+  gap: 20rem;                         /* Large gap between site title and toggle buttons */
+  align-items: center;                /* Vertically center items */
+  max-width: 1200px;                  /* Limit header width for large screens */
+  margin: 0 auto;                     /* Center container */
+  padding: 0 2rem; 
+  white-space: nowrap;                   /* Horizontal padding for breathing room */
+}
+
+/*
+  Site title styled as a logo.
+  Uses Netflix red, bold font, and glowing text-shadow for branding.
+  Flex layout allows for optional icon next to text.
+*/
+.site-title {
+  font-size: 2.5rem;                  /* Large font for logo effect */
+  font-weight: 900;                   /* Extra bold for emphasis */
+  letter-spacing: 4px;                /* Spaced letters for modern look */
+  color: var(--netflix-red);          /* Netflix red for logo */
+  margin: 0;                          /* Remove default margin */
+ 
+  transition: text-shadow 3s , color 0.3s; /* Smooth transition on hover */
+  display: flex;                      /* Align icon and text horizontally */
+  align-items: center;                /* Vertically center icon and text */
+  gap: 0.7rem; 
+  /* Optional: increase size for emoji/icon */
+  font-size: 2.2rem;
+  white-space: nowrap; 
+  transition: scale 0.5s ease-in-out;
+  /* Infinite glowing animation */
+  animation: infinite-glow 1.5s ease-in-out infinite alternate;                       /* Space between icon and text */
+
+}
+
+/* 
+  -webkit-text-stroke: 0.09rem rgb(238, 255, 0);
+  transition: -webkit-text-stroke 0.6s, color 0.3s; */
+.site-title:hover{
+ scale: 1.3;  
+}
+@keyframes infinite-glow {
+    0% {
+    
+    }
+    100% {
+      -webkit-text-stroke: 1px rgb(238, 255, 0);
+    }
+  }
+
+/*
+  Toggle buttons for switching between Data Structures and Algorithms.
+  Flex layout for horizontal alignment and spacing.
+*/
+.toggle-buttons {
+  display: flex;                      /* Arrange buttons in a row */
+  gap: 1rem;                          /* Space between buttons */
+}
+
+/*
+  Styles for inactive and active toggle buttons.
+  Red border and white text for inactive; red background for active.
+  Rounded for modern pill shape; transitions for smooth hover/active.
+*/
+.tgbtn,
+.tgbtn-active {
+  background: transparent;            /* Transparent by default */
+  border: 2px solid var(--netflix-red); /* Red border for Netflix feel */
+  color: var(--netflix-white);        /* White text */
+  font-size: 1rem;                    /* Readable font size */
+  font-weight: 700;                   /* Bold text for clarity */
+  padding: 0.6rem 1.5rem;             /* Padding for touch targets */
+  border-radius: 25px;                /* Pill-shaped buttons */
+  cursor: pointer;                    /* Pointer cursor on hover */
+  transition: background 0.2s, color 0.2s, transform 0.2s; /* Smooth transitions */
+  outline: none;                      /* Remove default outline */
+}
+
+.tgbtn:hover,
+.tgbtn-active {
+  background: var(--netflix-red);     /* Red background for active/hovered */
+  color: var(--netflix-white);        /* Keep text white */
+  transform: scale(1.05);             /* Slightly enlarge for feedback */
+}
+
+/*
+  Card grid layout for displaying cards responsively.
+  Uses CSS grid for neat, flexible arrangement.
+*/
+.card-grid{
+  display: grid;                      /* Grid layout for cards */
+  grid-template-columns: repeat(auto-fit,minmax(16rem,1fr)); /* Responsive columns */
+  gap: 2rem;                          /* Space between cards */
+  padding: 2.5rem  2rem 2rem 2rem ;   /* Padding around grid */
+  max-width: 70rem;                  /* Max width for large screens */
+  margin: 0 auto;                     /* Center grid */
+  width: 100%;                        /* Full width by default */
+}
+
+/*
+  Card styles for each Data Structure/Algorithm.
+  Black background, white text, and red accents for Netflix look.
+  Box-shadow for depth, rounded corners, and interactive scaling on hover.
+*/
+.card{
+  background: var(--netflix-black);   /* Card background matches site */
+  border: 2px solid transparent;      /* Subtle border, turns red on hover */
+  border-radius: 1rem;                /* Rounded corners for modern look */
+  color: var(--netflix-white);        /* White text */
+  padding: 2rem 1.2rem 1.2rem 1.2rem; /* Padding inside card */
+  box-shadow: 30px 30px 40px rgba(32, 31, 31, 0.5); /* Deep shadow for pop effect */
+  display: flex;                      /* Flex for vertical alignment */
+  flex-direction: column;             /* Stack logo, title, desc vertically */
+  align-items: center;                /* Center content horizontally */
+  text-align: center;                 /* Center text */
+  transition: transform 0.2s, border-color 0.2s, background 0.2s, color 0.2s; /* Smooth interactions */
+  cursor: pointer;                    /* Pointer cursor for interactivity */
+  animation: infinite-glo 4s ease-in-out infinite alternate;                       /* Space between icon and text */
+
+}
+@keyframes infinite-glo {
+    0% {
+    
+    }
+    100% {
+        box-shadow:                        /* Glowing effect for logo */
+        0 0 1px #8b0000,
+        0 0 1px #8b0000,
+        0 0 1px #8b0000,
+        0 0 1px #8b0000,
+        0 0 1px #8b0000,
+        0 0 1px #8b0000;
+    }
+  }
+
+.card:hover{
+  transform:scale(1.08);              /* Scale up card on hover */
+  border-color: var(--netflix-red);   /* Red border on hover */
+  background: #2f2c2c;                /* Slightly lighter black for hover effect */
+}
+
+/*
+  Card logo/icon styling.
+  Large font for visibility, spaced from title.
+*/
+.card-logo{
+  font-size: 2.5rem;                  /* Large icon size */
+  margin-bottom: 1rem;                /* Space below icon */
+}
+
+/*
+  Card title styling.
+  Red, bold, and spaced from description.
+*/
+.card-title{
+  font-size: 1.3rem;                  /* Title font size */
+  margin-bottom: 0.5rem;              /* Space below title */
+  font-weight: 700;                   /* Bold title */
+  color: var(--netflix-red);          /* Red for emphasis */
+}
+
+/*
+  Card description styling.
+  Slight opacity for subtle look and moderate font weight.
+*/
+.card-desc{
+  font-size: 1rem;                    /* Description font size */
+  color: var(--netflix-white);        /* White text */
+  opacity: 0.85;                      /* Slightly faded for contrast */
+  font-weight: 500;                   /* Medium weight for readability */
+}
+
+/*
+  On card hover, slightly scale up text/icon for a dynamic feel.
+*/
+.card:hover .card-desc{
+  transform: scale(1.05);             /* Slightly enlarge description */
+}
+.card:hover .card-title{
+  transform: scale(1.08);             /* Slightly enlarge title */
+}
+.card:hover .card-logo{
+  transform: scale(1.05);             /* Slightly enlarge icon */
+}
+
+/*
+  Footer styling for simple, centered resource links.
+  Black background, white text, and red hover for links.
+*/
+footer{
+  background: var(--netflix-black);   /* Match site background */
+  text-align: center;                 /* Center text */
+  padding: 1.5rem 0 1.5rem 0;         /* Vertical padding */
+  margin-top: auto;                   /* Push footer to bottom */
+}
+
+.footer-links{
+  display: flex;                      /* Arrange links in a row */
+  justify-content: center;            /* Center links horizontally */
+  gap: 2.5rem;                        /* Space between links */
+}
+
+.footer-links a{
+  color: var(--netflix-white);        /* White text for links */
+  text-decoration: none;              /* Remove underline */
+  font-weight: 700;                   /* Bold links */
+  transition: color 0.2s;             /* Smooth color transition on hover */
+}
+
+.footer-links a:hover{
+  color: var(--netflix-red);          /* Red text on hover for branding */
+} 
+
+/*
+  Responsive tweaks for mobile and tablet.
+  Stack header, shrink grid gaps, and adjust footer spacing for small screens.
+*/
+@media(max-width: 700px){
+  .container_header-container{
+      flex-direction: column;          /* Stack header content vertically */
+      gap:1rem;                       /* Smaller gap */
+      padding:0 1rem;                 /* Less horizontal padding */
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  .card-grid {
+      padding: 1.5rem 0.5rem;         /* Less padding on small screens */
+      gap: 1rem;                      /* Smaller gap between cards */
+  }   
+  .footer-links{
+      gap:1.2rem;                     /* Less space between footer links */
+  }
+}
+.cpp {
+    color: #fff;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  .cpp:hover {
+    color: #e50914;
+  }
+
