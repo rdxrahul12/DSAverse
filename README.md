@@ -72,13 +72,9 @@ Passionate about data structures? We welcome contributions!
 - Add detailed documentation
 - Include time and space complexity analysis
 
-## 📜 License
-[Choose an appropriate open-source license, e.g., MIT, Apache 2.0]
-
 ## 📞 Contact & Support
-- **Project Maintainer:** [Your Name]
-- **Email:** [your.email@example.com]
-- **LinkedIn:** [Your LinkedIn Profile]
+- **Project Maintainer:** Rahul Dewasi
+- **Email:** rdx128963@gmail.com
 
 ---
 
