@@ -361,13 +361,23 @@ function renderCards(category){
     const items = category === "ds" ? ds :  algo;
     items.forEach(item => {
         const card = document.createElement('div');
-        card.className = 'card';
-        card.innerHTML =`
-        <div class="card-logo"> ${item.logo}</div>
-        <div class="card-title"> ${item.name}</div>
-        <div class="card-desc"> ${item.desc}</div>
-
-        `;
+        card.className = `
+        bg-[var(--netflix-black)] text-[var(--netflix-white)] rounded-xl px-5 pt-8 pb-6 border-[0.01px] border-[var(--netflix-red)]
+        shadow-[30px_30px_40px_rgba(32,31,31,0.5)] flex flex-col items-center text-center
+        transition-all duration-200 cursor-pointer hover:scale-[1.05] hover:border-[var(--netflix-red)] hover:bg-gray-950 card-glow
+      `;
+      
+      card.innerHTML = `
+        <div class="text-[2.5rem] mb-4 transition-transform duration-200 hover:scale-[1.05]">
+          ${item.logo}
+        </div>
+        <div class="text-[1.3rem] mb-2 font-bold text-[var(--netflix-red)] transition-transform duration-200 hover:scale-[1.08]">
+          ${item.name}
+        </div>
+        <div class="text-base text-[var(--netflix-white)] opacity-85 font-medium transition-transform duration-200 hover:scale-[1.05]">
+          ${item.desc}
+        </div>
+      `;
         card.addEventListener('click',()=>{
             window.location.href = item.link;
         });

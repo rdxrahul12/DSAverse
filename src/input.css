@@ -1,0 +1,53 @@
+@import "tailwindcss";
+@import "./variables.css";
+@layer utilities {
+    @keyframes infinite-glow {
+      0% {}
+      100% {
+        -webkit-text-stroke: 1px rgb(238, 255, 0);
+      }
+    }
+  
+    .animate-infinite-glow {
+      animation: infinite-glow 1.5s ease-in-out infinite alternate;
+    }
+  
+    .text-stroke-yellow {
+      -webkit-text-stroke: 0.09rem rgb(238, 255, 0);
+    }
+  }
+  
+  @keyframes fadeScaleIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  @keyframes infiniteGlow {
+    0% {
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(229, 9, 20, 0.8);
+    }
+    100% {
+      box-shadow: 0 0 10px rgba(229, 9, 20, 0.4);
+    }
+  }
+  
+  .card-glow {
+    animation: fadeScaleIn 2s ease forwards, infiniteGlow 4s ease-in-out infinite;
+  }
+  
+  .tgbtn{
+    @apply bg-transparent border-2 border-[var(--netflix-red)] text-[var(--netflix-white)] text-base font-bold px-6 py-[0.6rem] rounded-full cursor-pointer transition-all duration-200 outline-none hover:bg-[var(--netflix-red)] hover:text-[var(--netflix-white)] hover:scale-[1.05]
+  }
+
+  .tgbtn-active{
+    @apply bg-[var(--netflix-red)] border-2 border-[var(--netflix-red)] text-[var(--netflix-white)] text-base font-bold px-6 py-[0.6rem] rounded-full cursor-pointer transition-all duration-200 outline-none scale-[1.05]
+  }
